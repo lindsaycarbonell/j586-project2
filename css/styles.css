@@ -1,17 +1,9 @@
+/*
 body {
     background-image:url('../images/earth-background.jpg');
-
 }
+*/
 
-
-/*FLEXSLIDER*/
-.flexslider, .flexslider-controls {
-  max-width: 800px;
-}
-
-.flexslider, .flexslider-controls {
-  max-width: 800px;
-}
 
 .slide-text {
   background-color: transparent;
@@ -25,9 +17,11 @@ body {
   padding-right:5px;
   position: absolute;
   width: 100%;
+/*  min-height:500px;*/
   zoom: 1;
   text-align:center;
 }
+
 
 .slide-title {
   font-size: 5vmin;
@@ -44,6 +38,7 @@ body {
 
 .words-slide{
   bottom:50%;
+  
 
 }
 .instructions-slide{
@@ -51,16 +46,15 @@ body {
 
 }
 .instructions-text{
-  font-size:3vmin;
+/*  font-size:3vmin;*/
+    font-size:10pt;
 }
 
 /*css animations*/
 .rotate {
-
   -ms-transform: rotate(7deg); /* IE 9 */
   -webkit-transform: rotate(7deg); /* Chrome, Safari, Opera */
   transform: rotate(7deg);
-
 }
 
 /*IDs*/
@@ -69,7 +63,6 @@ body {
 }
 #gases-div{
   bottom:-12%;
-
 }
 #gases-text{
   font-size:4vmin;
@@ -161,3 +154,26 @@ body {
 .whiteout{
   color:#fff;
 }
+
+/*ensures the images will fit in the slides*/
+img{
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+
+
+.embed-container { 
+position: relative;
+padding-bottom: 56.25%;
+height: 0;
+overflow: hidden;
+width: 100%; }
+
+.embed-container iframe, .embed-container object, .embed-container embed { 
+position:absolute;
+top: 0; 
+left: 0; 
+width: 100%; 
+height: 100%; }

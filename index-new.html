@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+
+
+<link rel="stylesheet" href="css/bootstrap.css" type="text/css" />
+<!--tooltipster css-->
+<link rel="stylesheet" type="text/css" href="css/tooltipster.css" />
+<!--news quiz css-->
+<!-- <link href="css/quiz-style.css" rel="stylesheet" media="screen" type="text/css"> -->
+
+<script type="text/javascript" src="http://code.jquery.com/jquery-1.7.0.min.js"></script>
+
+<!--tooltipster js-->
+<script type="text/javascript" src="js/jquery.tooltipster.min.js"></script>
+
+    <!-- Important Owl stylesheet -->
+<link rel="stylesheet" href="css/owl.carousel.css">
+ 
+<!-- Default Theme -->
+<link rel="stylesheet" href="css/owl.theme.css">
+
+<!-- Include js plugin -->
+<script src="js/owl.carousel.js"></script>
+
+<!--my stylesheet-->
+<link rel="stylesheet" href="css/styles.css" type="text/css" />
+
+
+<script type="text/javascript" charset="utf-8">
+    
+    //owl carousel
+    $(document).ready(function() {
+ 
+        $("#owl-slider").owlCarousel({
+            navigation : true, // Show next and prev buttons
+            slideSpeed : 300,
+            paginationSpeed : 400,
+            singleItem:true
+        });
+ 
+    });
+
+    //for crossing out things
+//    var _text = "";
+//    $(document).ready(function() {
+//        _text = $("#cross-out").text();
+//        StrikeThrough(0);
+//    });
+
+function StrikeThrough(index) {
+    if (index >= _text.length)
+        return false;
+    var sToStrike = _text.substr(0, index + 1);
+    var sAfter = (index < (_text.length - 1)) ? _text.substr(index + 1, _text.length - index) : "";
+    $("#cross-out").html("<strike>" + sToStrike + "</strike>" + sAfter);
+    window.setTimeout(function() {
+        StrikeThrough(index + 1);
+    }, 100);
+}
+
+//tooltipster
+//$(document).ready(function() {
+//  $('#anthro-tool').tooltipster();
+//});
+//$(document).ready(function() {
+//  $('#water-tool').tooltipster();
+//});
+//$(document).ready(function() {
+//  $('#graph-tool').tooltipster();
+//});
+//$(document).ready(function() {
+//  $('#cow-tool').tooltipster();
+//});
+//$(document).ready(function() {
+//  $('#burn-tool').tooltipster();
+//});
+</script>
+
+</head>
+
+<body>
+
+  <div class="container">
+  <div class="row">
+    <div class="col-lg-8 col-lg-offset-2 col-sm-8 col-sm-offset-2">
+  <div id="owl-slider" class="owl-carousel">
+
+    <!--TITLE SLIDE-->
+    <div>
+      <img src="images/the-graph.jpg" />
+      <div class="words-slide slide-text">
+          <p>The Greenhouse Effect</p>
+        <p class="slide-title rotate inline-block">Global Climate Change</p>
+        <p id="cross-out" class="slide-title inline">Global Warming </p>
+      </div>
+    </div>
+
+    <!--STEP 1/6-->
+    <div>
+      <img src="images/warming-step-1.gif" />
+      <div class="instructions-slide slide-text">
+              <p class="instructions-text">Solar radiation reaches the Earth's atmosphere, some is reflected back into space.</p>
+      </div>
+    </div>
+
+    <!--STEP 2/6-->
+    <div>
+      <img src="images/warming-step-2.gif" />
+      <div class="instructions-slide slide-text">
+        <p class="instructions-text">The rest of the sun's energy is absorbed by the land and oceans, heating the Earth.</p>
+      </div>
+    </div>
+
+    <!--STEP 3/6-->
+    <div>
+      <img src="images/warming-step-3.gif" />
+      <div class="instructions-slide slide-text">
+        <p class="instructions-text">Heat radiates from Earth towards space.</p>
+      </div>
+    </div>
+
+    <!--STEP 4/6-->
+    <div>
+      <img src="images/warming-step-4.gif" />
+      <div class="instructions-slide slide-text">
+        <p class="instructions-text">Some of this heat is trapped by greenhouse gases in the atmosphere, keeping the Earth warm enough to sustain life.</p>
+      </div>
+    </div>
+
+    <!--greenhouse gases insert-->
+    <div>
+      <img src="images/earth.jpg" />
+    <div id="gases-list" class="slide-text">
+      <div id="h20">Water vapor<p class="sub-text">The most abundant greenhouse gas, but importantly, it acts as a feedback to the climate. Water vapor increases as the Earth's atmosphere warms, but so does the possibility of clouds and precipitation, making these some of the most important feedback mechanisms to the greenhouse effect.</p>
+      <img src="images/water-cycle.png" id="water-tool" title="Water vapor in the atmosphere contributes to the water cycle, a feedback loop in nature that cycles water through air and land.">
+      </div>
+    </div><!--end gases-list-->
+
+      <div id="gases-div" class="slide-text">
+        <p id="gases-text" class="inline-block">Greenhouse gases</p>
+      </div>
+    </div>
+
+    <!--greenhouse gases insert-->
+    <div>
+      <img src="images/earth.jpg" />
+    <div id="gases-list" class="slide-text">
+      <div id="co2">Carbon Dioxide (CO2)<p class="sub-text">A minor but very important component of the atmosphere, carbon dioxide is released through natural processes such as respiration and volcano eruptions and through human activities. Most CO2 emissions are <span id="anthro-tool" title="anthropogenic: human-caused">anthropogenic.</span></p></div>
+      <img src="images/the-graph.jpg" id="graph-tool" title="This graph shows the growth in carbon dioxide in the atmosphere, mostly due to anthropogenic causes.">
+    </div><!--end gases-list-->
+      <div id="gases-div" class="slide-text">
+        <p id="gases-text" class="inline-block">Greenhouse gases</p>
+      </div>
+    </div>
+
+    <!--greenhouse gases insert-->
+    <div>
+      <img src="images/earth.jpg" />
+    <div id="gases-list" class="slide-text">
+      <div id="meth">Methane<p class="sub-text"> A hydrocarbon gas produced both through natural sources and human activities. Methane is a far more active greenhouse gas than carbon dioxide, but also one which is much less abundant in the atmosphere.</p></div>
+      <img src="images/cow.jpg" id="cow-tool" title="Industrial farming of domestic livestock like cows can cause excessive methane emissions.">
+      </div><!--end gases-list-->
+      <div id="gases-div" class="slide-text">
+        <p id="gases-text" class="inline-block">Greenhouse gases</p>
+      </div>
+    </div>
+
+    <!--greenhouse gases insert-->
+    <div>
+      <img src="images/earth.jpg" />
+    <div id="gases-list" class="slide-text">
+      <div id="no2">Nitrous Oxide (NO2)<p class="sub-text">A powerful greenhouse gas produced by soil cultivation practices, especially the use of commercial and organic fertilizers, fossil fuel combustion, nitric acid production, and biomass burning.</p></div>
+      <img src="images/burning.jpg" id="burn-tool" title="Burning of biomass for fuel releases nitrous oxide.">
+    </div><!--end gases-list-->
+      <div id="gases-div" class="slide-text">
+        <p id="gases-text" class="inline-block">Greenhouse gases</p>
+      </div>
+    </div>
+
+    <!--STEP 5/6-->
+    <div>
+      <img src="images/warming-step-5.gif" />
+      <div class="instructions-slide slide-text">
+          <p class="instructions-text">Human activities increase the amount of greenhouse gases in the atmosphere, amplifying the greenhouse effect.</p>
+      </div>
+    </div>
+
+    <!--STEP 6/6-->
+    <div>
+      <img src="images/warming-step-6.gif" />
+      <div class="instructions-slide slide-text">
+          <p class="instructions-text">This is trapping extra heat, causing the Earth's temperature to rise.</p>
+      </div>
+    </div>
+
+      
+      
+
+    
+        <div class='embed-container'><iframe src='news-quiz.html' style='border:0'></iframe>
+      </div>
+<!--
+      <iframe class="embed-responsive-item"
+  src="news-quiz.html" height="100%" width="100%">You need an iframes capable browser to view this content.</iframe>
+-->
+      
+
+
+</div><!--END SLIDER-->
+</div><!--end column-->
+<div class="col-lg-12 col-sm-12">
+  <p class="whiteout">Sources: NASA, environment.gov.au</p>
+</div>
+</div><!--end row-->
+</div><!--end container-->
+
+</body>
+
+</html>

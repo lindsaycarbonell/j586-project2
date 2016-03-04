@@ -13,19 +13,15 @@
     </style>
 
 <link rel="stylesheet" href="css/bootstrap.css" type="text/css" />
-<!--tooltipster css-->
-<link rel="stylesheet" type="text/css" href="css/tooltipster.css" />
 <!--news quiz css-->
 <!-- <link href="css/quiz-style.css" rel="stylesheet" media="screen" type="text/css"> -->
 
 <script type="text/javascript" src="http://code.jquery.com/jquery-1.7.0.min.js"></script>
 
-<!--tooltipster js-->
-<script type="text/javascript" src="js/jquery.tooltipster.min.js"></script>
 
     <!-- Important Owl stylesheet -->
 <link rel="stylesheet" href="css/owl.carousel.css">
- 
+
 <!-- Default Theme -->
 <link rel="stylesheet" href="css/owl.theme.css">
 
@@ -36,10 +32,10 @@
 <link rel="stylesheet" href="css/styles.css" type="text/css" />
 
 
-<script type="text/javascript" charset="utf-8">   
+<script type="text/javascript" charset="utf-8">
     //owl carousel
     $(document).ready(function() {
- 
+
         $("#owl-slider").owlCarousel({
             navigation : true, // Show next and prev buttons
             slideSpeed : 300,
@@ -47,35 +43,35 @@
             singleItem:true,
             autoHeight : true
         });
- 
+
     });
 </script>
 
 <!--google maps API-->
 <script type="text/javascript"
         src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD9MognY8F7eqdKlh-jIWkGMD5drrg_OJM"></script>
-   
-    
+
+
 </head>
 
-<body>    
-    
+<body>
+
   <div class="container">
       <div class="row">
         <div class="col-lg-8 col-lg-offset-2 col-sm-8 col-sm-offset-2">
-            <div id="map-canvas" style="height:20vh;"></div>
+            <!-- <div id="map-canvas" style="height:20vh;"></div> -->
         </div>
         </div>
       </div>
-      
-      
+
+
   <div class="row">
     <div class="col-lg-8 col-lg-offset-2 col-sm-8 col-sm-offset-2">
   <div id="owl-slider" class="owl-carousel">
 
     <!--TITLE SLIDE 1/11-->
     <div>
-      <img src="images/the-graph.jpg" />
+      <img src="assets/phoenix.jpg" />
       <div class="slide-text">
           <p>Top 10 Most Polluted Cities</p>
       </div>
@@ -100,17 +96,17 @@
     <div>
       <img class="slider-img" src="assets/dallas.jpg" />
     </div>
-      
+
     <!--STEP 6/11, houston-->
     <div>
       <img class="slider-img" src="assets/houston.jpg" />
-    </div> 
+    </div>
 
     <!--STEP 7/11, sacramento-->
     <div>
       <img class="slider-img" src="assets/sacramento.jpg" />
     </div>
-      
+
     <!--STEP 8/11, fresno-->
     <div>
       <img class="slider-img" src="assets/fresno.jpg" />
@@ -120,7 +116,7 @@
     <div>
       <img class="slider-img" src="assets/bakersfield.jpg" />
     </div>
-      
+
     <!--STEP 10/11, visalia-->
     <div>
       <img class="slider-img" src="assets/visalia.jpg" />
@@ -138,10 +134,78 @@
 </div><!--end row-->
 </div><!--end container-->
  <script src="js/map.js"></script>
-    
-    
+
+
     <div id="map-canvas"></div>
-        </div>
+      </div>
+
+<script>
+<script type="text/javascript">
+  init();
+  var count = 0;
+  var html = "";
+  var can_tilt = true;
+
+  function init() {
+    if (window.DeviceOrientationEvent) {
+      document.getElementById("doEvent").innerHTML = "DeviceOrientation";
+      // Listen for the deviceorientation event and handle the raw data
+      window.addEventListener('deviceorientation', function(eventData) {
+        // gamma is the left-to-right tilt in degrees, where right is positive
+        var tiltLR = eventData.gamma;
+
+        // beta is the front-to-back tilt in degrees, where front is positive
+        var tiltFB = eventData.beta;
+
+        // alpha is the compass direction the device is facing in degrees
+        var dir = eventData.alpha
+
+        // call our orientation event handler
+        deviceOrientationHandler(tiltLR, tiltFB, dir);
+        }, false);
+
+    } else {
+      document.getElementById("doEvent").innerHTML = "Not supported on your device or browser.  Sorry."
+    }
+  }
+
+
+  function deviceOrientationHandler(tiltLR, tiltFB, dir) {
+    var gamma = Math.round(tiltLR);
+
+    if (gamma < 0){
+      gamma = Math.abs(gamma);
+    } else {
+      gamma = 180-gamma;
+    }
+
+  if (can_tilt){
+        if (gamma > 110){
+          alert("tilt right");
+          can_tilt = false;
+          setTimeout(function(){can_tilt = true;}, 1000);
+        } else if (gamma < 70){
+          alert("tilt left");
+          can_tilt = false;
+          setTimeout(function(){can_tilt = true;}, 1000);
+        }
+  }
+
+    document.getElementById("doTiltLR").innerHTML = Math.round(tiltLR);
+    document.getElementById("doTiltFB").innerHTML = Math.round(tiltFB);
+    document.getElementById("doDirection").innerHTML = Math.round(dir);
+
+    // Apply the transform to the image
+    var logo = document.getElementById("imgLogo");
+    logo.style.webkitTransform = "rotate("+ tiltLR +"deg) rotate3d(1,0,0, "+ (tiltFB*-1)+"deg)";
+    logo.style.MozTransform = "rotate("+ tiltLR +"deg)";
+    logo.style.transform = "rotate("+ tiltLR +"deg) rotate3d(1,0,0, "+ (tiltFB*-1)+"deg)";
+
+
+
+  }
+
+</script>
 </body>
 
 </html>
